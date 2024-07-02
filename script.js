@@ -8,6 +8,7 @@ const closeModalBtn = document.getElementById("close-modal-btn")
 const cartCounter = document.getElementById("cart-count")
 const addressInput = document.getElementById("address")
 const addressWarn = document.getElementById("address-warn")
+const payment = document.getElementById("paymentInput")
 
 let cart = [];
 
@@ -130,7 +131,6 @@ addressInput.addEventListener("input", function(event) {
     }
 })
 
-
 // FINALIZAR PEDIDO
 checkoutBtn.addEventListener("click", function() {
 
@@ -152,6 +152,8 @@ checkoutBtn.addEventListener("click", function() {
         return;
     }
 
+    const paymentInput = document.querySelector('input[name="payment-method"]:checked');
+
     if(cart.length === 0) return;
 
     if(addressInput.value === ""){
@@ -163,14 +165,14 @@ checkoutBtn.addEventListener("click", function() {
     // ENVIAR O PEDIDO PARA O WHATSAPP
     const cartItems = cart.map((item) => {
         return (
-            `• *${item.name}* / Quantidade: (*${item.quantity}*) / Preço Individual: R$ *${item.price.toFixed(2)}* | `
+            `• *${item.name}* / Quantidade: (*${item.quantity}*) / Preço Individual: R$ *${item.price.toFixed(2)}* |\n`
         )
     }).join("")
 
     const message = encodeURIComponent(cartItems)
     const phone = "85996462076"
 
-    window.open(`https://wa.me/${phone}?text=${message} | Endereço: *${addressInput.value}* | Total: *${cartTotal.textContent}*`, "_blank")
+    window.open(`https://wa.me/${phone}?text=${message} • Total: *${cartTotal.textContent}* | • Método de Pagamento: *${paymentInput.value}* | • Endereço: *${addressInput.value}*`, "_blank")
 
     cart = [];
     updateCartModal();
@@ -179,7 +181,7 @@ checkoutBtn.addEventListener("click", function() {
 // VERIFICAR A HORA E MANIPULAR O CARD HORÁRIO
 function checkRestaurantOpen() {
     const data = new Date();
-    const hora = data.getHours();
+    const hora = 19;
 
     return hora >= 18 && hora <23;
 }
