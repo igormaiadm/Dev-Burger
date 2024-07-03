@@ -1,5 +1,5 @@
-**Captura de Tela do site Dev Burger**
+**Captura de Tela do site IgBurger**
 
-Site: https://igormaiadm.github.io/Dev-Burger/
+Site: https://igormaiadm.github.io/IgBurger/
 
-![Captura de Tela do site Dev Burger](https://raw.githubusercontent.com/igormaiadm/Dev-Burger/main/screenshot.jpg)
+![Captura de Tela do site IgBurger](https://raw.githubusercontent.com/igormaiadm/IgBurger/main/screenshot.jpg)
