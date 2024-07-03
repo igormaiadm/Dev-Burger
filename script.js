@@ -74,9 +74,10 @@ function updateCartModal() {
                     <p class="font-semibold">${item.name}</p>
                     <p>Quantidade: ${item.quantity}</p>
                     <p class="font-medium mt-2">R$ ${item.price.toFixed(2)}</p>
+                    <hr>
                 </div>
 
-                <button class="remove-cart-btn" data-name="${item.name}">
+                <button class="remove-cart-btn hover:text-red-500" data-name="${item.name}">
                     Remover
                 </button>
 
@@ -181,7 +182,7 @@ checkoutBtn.addEventListener("click", function() {
 // VERIFICAR A HORA E MANIPULAR O CARD HORÁRIO
 function checkRestaurantOpen() {
     const data = new Date();
-    const hora = 19;
+    const hora = data.getHours();
 
     return hora >= 18 && hora <23;
 }
